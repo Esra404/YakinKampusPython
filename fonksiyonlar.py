@@ -90,3 +90,4 @@ print([*map(lambda x: x**2,sayilar)])
 
 sayilar=[*range(1,6)]
 print([*filter(lambda x: x if x%2 ==0 else None,sayilar)])
+print()
