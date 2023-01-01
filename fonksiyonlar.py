@@ -58,3 +58,35 @@ def gobek_adi_yazdir(**kwargs):
     else:
         print("gobekadi yok")
 print(gobek_adi_yazdir(adi="esra",soyadi="durmaz",gobekadi="derya"))
+#  map lambda fonksiyonları------------------------------------------------------------------------------------------------------
+# map listenin her elemanına aynı fonksiyonu uygulamamızı sağlıyor
+def karesini_al(x):
+    return x **2
+print(karesini_al(5))
+# -------------------------------------------------------------------------------------------------------------------------------------------
+sayilar=[*range(1,6)]
+print(sayilar)
+sayilar=[*range(1,6)]
+print(sayilar)
+for index in range(len(sayilar)):
+    sayilar[index]=karesini_al(sayilar[index])
+print(sayilar)
+
+
+sayilar=[*range(1,6)]
+print([*map(karesini_al,sayilar)])
+
+def cif_sayı_kareal(x):
+  if x%2==0:
+    return x**2
+print(cif_sayı_kareal(4))
+# filter-------------------------
+sayilar=[*range(1,6)]
+print([*filter(cif_sayı_kareal,sayilar)])
+
+# lamda yol üstünde foksiyon kurmamız yarar
+sayilar=[*range(1,6)]
+print([*map(lambda x: x**2,sayilar)])
+
+sayilar=[*range(1,6)]
+print([*filter(lambda x: x if x%2 ==0 else None,sayilar)])
