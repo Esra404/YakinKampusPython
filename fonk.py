@@ -15,3 +15,4 @@ print(math.ceil(7.1))
 print(math.floor(8.6))
 print(math.factorial(4))
 print(math.pow(3,2))
+pow
