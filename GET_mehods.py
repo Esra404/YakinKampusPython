@@ -39,11 +39,11 @@ class SucRaporu():
             return response.json()
         else:
             return None
-    def sucları_raporla(self):
+    def suclari_raporla(self):
         suclar_listesi=[]
         if self.suclar is not None:
             for suc in self.suclar:
                 suclar_listesi.append(suc['category'])
             return Counter(suclar_listesi)
 sr=SucRaporu('norfolk','2020-02','bicycle-theft')
-sr.suclari_raporla()
+print(sr.suclari_raporla())
