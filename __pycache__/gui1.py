@@ -49,15 +49,15 @@ R2.pack(anchor=NW,pady=5,padx=15)
 
 var1=IntVar()
 C1=Checkbutton(frame_alt_sol,text="bir hafta önce",variable=var1,onvalue=1,offvalue=0,bg='#add8e6',font="Verdana 10")
-C1.pack(anchor=NW,pady=5,padx=25)
+C1.pack(anchor=NW,pady=2,padx=25)
 
 var2=IntVar()
 C2=Checkbutton(frame_alt_sol,text="bir gün önce",variable=var1,onvalue=1,offvalue=0,bg='#add8e6',font="Verdana 10")
-C2.pack(anchor=NW,pady=5,padx=25)
+C2.pack(anchor=NW,pady=2,padx=25)
 
 var3=IntVar()
 C3=Checkbutton(frame_alt_sol,text="aynı gün",variable=var1,onvalue=1,offvalue=0,bg='#add8e6',font="Verdana 10")
-C3.pack(anchor=NW,pady=5,padx=25)
+C3.pack(anchor=NW,pady=2,padx=25)
 
 
 
