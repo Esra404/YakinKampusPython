@@ -66,7 +66,7 @@ def gonder():
     return
 Label(frame_alt_sag,text="HATİRLATMA MESAJI",bg='#add8e6',font="verdana 10 bold").pack(padx=10,pady=10,anchor=NW)
 metin_alani=Text(frame_alt_sag,heigh=9,width=50)
-metin_alani.tag_configure('styls',foregroud='#bfbfbf',font=('verdana',7,'bold'))
+metin_alani.tag_configure('styls',foreground='#bfbfbf',font=('verdana',7,'bold'))
 metin_alani.pack()
 
 karsilama_metni='mesajini buraya gir'
