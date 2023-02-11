@@ -6,12 +6,12 @@ master=Tk()
 canvas=Canvas(master,heigh=450,width=750)
 canvas.pack()
 
-frame_ust=Frame(master,bg='#1d3059')
+frame_ust=Frame(master,bg='#add8e6')
 frame_ust.place(relx=0.1,rely=0.1,relwidth=0.8,relheight=0.1)
 
 
 
-frame_alt_sol=Frame(master,bg='#3bb4ac')
+frame_alt_sol=Frame(master,bg='#add8e6')
 frame_alt_sol.place(relx=0.1,rely=0.21,relwidth=0.23,relheight=0.5)
 
 
@@ -41,7 +41,7 @@ hatirlatma_tipi_etiket.pack(padx=10,pady=10,side=RIGHT)
 
 Label(frame_alt_sol,text="Hatirlatma yöntemi",bg='#add8e6',font="Verdana 10 bold").pack(padx=10,pady=10,anchor=NW)
 var=IntVar()
-R1=Radiobutton(frame_alt_sol,text="Sisteme kaydet",variable=var,value=0,bg='#add8e6',font="Verdana 10")
+R1=Radiobutton(frame_alt_sol,text="Sisteme kaydet",variable=var,value=1,bg='#add8e6',font="Verdana 10")
 R1.pack(anchor=NW,pady=5,padx=15)
 
 R2=Radiobutton(frame_alt_sol,text="E posta gönder",variable=var,value=1,bg='#add8e6',font="Verdana 10")
@@ -64,25 +64,38 @@ C3.pack(anchor=NW,pady=2,padx=25)
 from tkinter import messagebox
 def gonder():
     son_mesaj=""
-    # if var.get():
-    #     if var.get()==1:
-    #         son_mesaj +="veriniz basarıyla sisteme kaydedilmişitr"
-    #         tip=hatirlatma_tipi_opsiyon() if hatirlatma_tipi_opsiyon.get() =='' else "genel"
-    #         tarih=hatirlatma_tarih_secici.get()
-    #         mesaj=metin_alani.grt("1.0","END")
+    try:
+        if var.get():
+            if var.get()==1:
+                son_mesaj +="veriniz basarıyla sisteme kaydedilmişitr"
+                tip=hatirlatma_tipi_opsiyon() if hatirlatma_tipi_opsiyon.get() =='' else "genel"
+                tarih=hatirlatma_tarih_secici.get()
+                mesaj=metin_alani.get("1.0","end")
 
+                with open ("hatirlatma.txt","w") as dosya:
+                    dosya.write(
+                        '{} kategorisinde,{} tarihinde ve "{}"notuyla hatirlatma '.format(
 
+                            tip,
+                            tarih,
+                            mesaj
+                        )
+                    )
+                    dosya.close()
 
+            elif var.get() ==2:
+                    son_mesaj +="e posta yoluyla hatirlatma size ulaşacaktır."
 
+            messagebox.showinfo("başarılı işlem ",son_mesaj)
+        else:
+            son_mesaj +="Gerekli alanların doldurulduğundan emin olun."
+            messagebox.showwarning("yetersiz bilgi",son_mesaj)
+    except:
+        son_mesaj +="islem basarili oldu"
+        messagebox.showerror("basarisiz islem", son_mesaj)
 
-
-
-
-        # elif var.get() ==2:
-        #     son_mesaj +="e posta yoluyla hatirlatma size ulaşacaktır."
-
-        # messagebox.showinfo("başarılı işlem ",son_mesaj)
-    return
+    finally:
+        master.destroy()
 Label(frame_alt_sag,text="HATİRLATMA MESAJI",bg='#add8e6',font="verdana 10 bold").pack(padx=10,pady=10,anchor=NW)
 metin_alani=Text(frame_alt_sag,heigh=9,width=50)
 metin_alani.tag_configure('styls',foreground='#bfbfbf',font=('verdana',7,'bold'))
